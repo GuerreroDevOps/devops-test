@@ -15,9 +15,6 @@ Parameters:
   VPCSB1:
     Type: String
     Default: "subnet-00000000000000000"
-  VPCSB2:
-    Type: String
-    Default: "subnet-00000000000000000"
   EnvRds:
     Type: String
     Default: "devops/test"
@@ -40,7 +37,6 @@ Resources:
           - !Ref VPCSG
         SubnetIds:
           - !Ref VPCSB1
-          - !Ref VPCSB2
       Environment:
         Variables:
           STAGE: !Ref EnvStage
