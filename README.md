@@ -1,6 +1,12 @@
-# devops-test
+# **devops-test**
 
 Este projecto contiene codigo y archivos de soporte para una aplicación serverless que se despliega con SAM CLI y una infraestructura con cloudformation.
+
+**Documentación de AWS**
+
+https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-reference.html#serverless-sam-cli
+
+https://docs.aws.amazon.com/es_es/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.SaveIntoS3.html
 
 **Estructura de Carpetas:**
 - coding/* - Codigo de las aplicaciones Funciones Lambda.
