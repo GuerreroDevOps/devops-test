@@ -1,6 +1,12 @@
 # **devops-test**
 
-Este projecto contiene codigo y archivos de soporte para una aplicación serverless que se despliega con SAM CLI y una infraestructura con cloudformation.
+Microservicio en Lambda Node 14 que realiza un consumo de un secreto para conectarse a una base de datos y consume la tabla USERS.
+
+Se crea el archivo template.yaml (cloudformation) el cual va a realizar la creación de las lambda con su configuración.
+
+Se crea el archivo codepipeline.yaml (cloudformation) el cual se va a encargar de crear todo el Pipeline para estar pendiente de los cambios del repositorio y realizar la construción y despliegue en los ambientes de preproduction y production.
+
+Se crea el archivo pipeline/buildspec_deploy.yml el cua se encargara de ejecutar la fase de despliegue con las variables que se envien del codepipeline.yaml al template.yml.
 
 **Documentación de AWS**
 
