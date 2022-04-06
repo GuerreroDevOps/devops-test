@@ -62,13 +62,13 @@ Parameters:
     Default: "379972058031.dkr.ecr.us-east-1.amazonaws.com/aws-sam-cli-managed-sandboxdevopstest-pipeline-resources-imagerepository-y0zeukmegnye"
   TestingVpcSecurityGroup:
     Type: String
-    Default: "sg-00000000000000000"
+    Default: "sg-000"
   TestingVpcSubnet1:
     Type: String
-    Default: "subnet-00000000000000000"
+    Default: "subnet-000"
   TestingVpcSubnet2:
     Type: String
-    Default: "subnet-00000000000000000"
+    Default: "subnet-000"
   TestingRdsMysqlSecret:
     Type: String
     Default: "devops/testRO"
@@ -95,13 +95,13 @@ Parameters:
     Default: "379972058031.dkr.ecr.us-east-1.amazonaws.com/aws-sam-cli-managed-productiondevopstest-pipeline-resources-imagerepository-nnpw2vdqd7ff"
   ProdVpcSecurityGroup:
     Type: String
-    Default: "sg-00000000000000000"
+    Default: "sg-000"
   ProdVpcSubnet1:
     Type: String
-    Default: "subnet-00000000000000000"
+    Default: "subnet-000"
   ProdVpcSubnet2:
     Type: String
-    Default: "subnet-00000000000000000"
+    Default: "subnet-000"
   ProdRdsMysqlSecret:
     Type: String
     Default: "devops/prodRO"
