@@ -7,6 +7,9 @@ Estructura de Carpetas:
 - coding/*/tests - Pruebas unitarias que se definen dentro de cada aplicación.
 - template.yaml - Template que define los recursos de las aplicaciones.
 
+Estructura del Proyecto
+<img src="https://github.com/GuerreroDevOps/devops-test/raw/main/images/architecture-01.png" width="100" alt="DevOps Arquitecture">
+
 ## Deploy the application
 
 Se configurar 2 ambientes (Sandbox y Production) y se deja con la practica de desarrollo basado en troncos.
