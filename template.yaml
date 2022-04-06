@@ -9,19 +9,16 @@ Parameters:
   EnvStage:
     Type: String
     Default: "DEV"
-  VpcSecurityGroup:
+  VPCSG:
     Type: String
     Default: "sg-00000000000000000"
-  VpcSubnet1:
+  VPCSB1:
     Type: String
     Default: "subnet-00000000000000000"
-  VpcSubnet2:
+  VPCSB2:
     Type: String
     Default: "subnet-00000000000000000"
-  VpcSubnet3:
-    Type: String
-    Default: "subnet-00000000000000000"
-  EnvRdsMysqlSecret:
+  EnvRds:
     Type: String
     Default: "devops/test"
 
@@ -40,14 +37,14 @@ Resources:
         - x86_64
       VpcConfig:
         SecurityGroupIds:
-          - !Ref VpcSecurityGroup
+          - !Ref VPCSG
         SubnetIds:
-          - !Ref VpcSubnet1
-          - !Ref VpcSubnet2
+          - !Ref VPCSB1
+          - !Ref VPCSB2
       Environment:
         Variables:
           STAGE: !Ref EnvStage
-          RDS_MYSQL_SECRET: !Ref EnvRdsMysqlSecret
+          RDS_MYSQL_SECRET: !Ref EnvRds
       Events:
         ApiApp:
           Type: Api
