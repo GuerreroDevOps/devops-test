@@ -1,27 +1,37 @@
 # devops-test
 
-Este projecto contiene codigo y archivos de soporte para una aplicación serverless que se despliega con SAM CLI.
+Este projecto contiene codigo y archivos de soporte para una aplicación serverless que se despliega con SAM CLI y una infraestructura con cloudformation.
 
-Estructura de Carpetas:
+**Estructura de Carpetas:**
 - coding/* - Codigo de las aplicaciones Funciones Lambda.
 - coding/*/tests - Pruebas unitarias que se definen dentro de cada aplicación.
 - template.yaml - Template que define los recursos de las aplicaciones.
+- codepipeline.yaml - Template que define los stages del pipeline.
 
-Estructura del Proyecto
-<img src="https://github.com/GuerreroDevOps/devops-test/raw/main/images/architecture-01.png" width="100" alt="DevOps Arquitecture">
+**Estructura del Proyecto:**
+
+<img src="https://github.com/GuerreroDevOps/devops-test/raw/main/images/architecture-01.png" width="400" alt="DevOps Arquitecture">
 
 ## Deploy the application
 
 Se configurar 2 ambientes (Sandbox y Production) y se deja con la practica de desarrollo basado en troncos.
-
-You may need the following for local testing.
 
 * Node.js - [Install Node.js 14](https://nodejs.org/en/), Incluye los paquetes de NPM.
 
 Para construir el proyecto con una imagen de Docker con el Dockerfile que se encuentra dentro de cada aplication.
 ```bash
 sam build
+
+sam deploy -t codepipeline.yaml --stack-name devops-test-pipeline --capabilities=CAPABILITY_IAM
 ```
+
+<img src="https://github.com/GuerreroDevOps/devops-test/raw/main/images/pipe-01.png" width="400" alt="DevOps Pipe 1">
+
+<img src="https://github.com/GuerreroDevOps/devops-test/raw/main/images/pipe-02.png" width="400" alt="DevOps Pipe 2">
+
+Cuando se ejecute el pipeline va a solicitar la conexion a Github y se debe aprobar.
+
+<img src="https://github.com/GuerreroDevOps/devops-test/raw/main/images/conexion-01.png" width="400" alt="DevOps Conexion 1">
 
 ## Use the SAM CLI to build and test locally
 

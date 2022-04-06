@@ -45,6 +45,9 @@ Parameters:
   TestingStackName:
     Type: String
     Default: "SandboxDevOpsTest"
+  TestingStage:
+    Type: String
+    Default: "TEST"
   TestingPipelineExecutionRole:
     Type: String
     Default: "arn:aws:iam::379972058031:role/aws-sam-cli-managed-SandboxD-PipelineExecutionRole-1TGF8WDFWN856"
@@ -57,12 +60,27 @@ Parameters:
   TestingImageRepository:
     Type: String
     Default: "379972058031.dkr.ecr.us-east-1.amazonaws.com/aws-sam-cli-managed-sandboxdevopstest-pipeline-resources-imagerepository-y0zeukmegnye"
+  TestingVpcSecurityGroup:
+    Type: String
+    Default: "sg-00000000000000000"
+  TestingVpcSubnet1:
+    Type: String
+    Default: "subnet-00000000000000000"
+  TestingVpcSubnet2:
+    Type: String
+    Default: "subnet-00000000000000000"
+  TestingRdsMysqlSecret:
+    Type: String
+    Default: "devops/testRO"
   ProdRegion:
     Type: String
     Default: "us-east-1"
   ProdStackName:
     Type: String
     Default: "ProductionDevOpsTest"
+  ProdStage:
+    Type: String
+    Default: "PROD"
   ProdPipelineExecutionRole:
     Type: String
     Default: "arn:aws:iam::379972058031:role/aws-sam-cli-managed-Producti-PipelineExecutionRole-XO1P5892P2E6"
@@ -75,6 +93,18 @@ Parameters:
   ProdImageRepository:
     Type: String
     Default: "379972058031.dkr.ecr.us-east-1.amazonaws.com/aws-sam-cli-managed-productiondevopstest-pipeline-resources-imagerepository-nnpw2vdqd7ff"
+  ProdVpcSecurityGroup:
+    Type: String
+    Default: "sg-00000000000000000"
+  ProdVpcSubnet1:
+    Type: String
+    Default: "subnet-00000000000000000"
+  ProdVpcSubnet2:
+    Type: String
+    Default: "subnet-00000000000000000"
+  ProdRdsMysqlSecret:
+    Type: String
+    Default: "devops/prodRO"
   # CodeStarConnectionArn and FeatureGitBranch are required for pipelines for feature branches
   CodeStarConnectionArn:
     Type: String
@@ -234,6 +264,11 @@ Resources:
                       {"name": "ENV_TEMPLATE", "value": "packaged-test.yaml"},
                       {"name": "ENV_REGION", "value": "${TestingRegion}"},
                       {"name": "ENV_STACK_NAME", "value": "${TestingStackName}"},
+                      {"name": "ENV_STAGE", "value": "${TestingStage}"},
+                      {"name": "ENV_VPC_SG", "value": "${TestingVpcSecurityGroup}"},
+                      {"name": "ENV_VPC_SUBNET_1", "value": "${TestingVpcSubnet1}"},
+                      {"name": "ENV_VPC_SUBNET_2", "value": "${TestingVpcSubnet2}"},
+                      {"name": "ENV_RDS_MYSQL_SM", "value": "${TestingRdsMysqlSecret}"},
                       {"name": "ENV_PIPELINE_EXECUTION_ROLE", "value": "${TestingPipelineExecutionRole}"},
                       {"name": "ENV_CLOUDFORMATION_EXECUTION_ROLE", "value": "${TestingCloudFormationExecutionRole}"},
                       {"name": "ENV_BUCKET", "value": "${TestingArtifactBucket}"},
@@ -282,6 +317,11 @@ Resources:
                       {"name": "ENV_TEMPLATE", "value": "packaged-prod.yaml"},
                       {"name": "ENV_REGION", "value": "${ProdRegion}"},
                       {"name": "ENV_STACK_NAME", "value": "${ProdStackName}"},
+                      {"name": "ENV_STAGE", "value": "${ProdStage}"},
+                      {"name": "ENV_VPC_SG", "value": "${ProdVpcSecurityGroup}"},
+                      {"name": "ENV_VPC_SUBNET_1", "value": "${ProdVpcSubnet1}"},
+                      {"name": "ENV_VPC_SUBNET_2", "value": "${ProdVpcSubnet2}"},
+                      {"name": "ENV_RDS_MYSQL_SM", "value": "${ProdRdsMysqlSecret}"},
                       {"name": "ENV_PIPELINE_EXECUTION_ROLE", "value": "${ProdPipelineExecutionRole}"},
                       {"name": "ENV_CLOUDFORMATION_EXECUTION_ROLE", "value": "${ProdCloudFormationExecutionExeRole}"},
                       {"name": "ENV_BUCKET", "value": "${ProdArtifactBucket}"},

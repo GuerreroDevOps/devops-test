@@ -5,10 +5,31 @@ Description: >
 
   Sample SAM Template for devops-test
   
+Parameters:
+  EnvStage:
+    Type: String
+    Default: "DEV"
+  VpcSecurityGroup:
+    Type: String
+    Default: "sg-00000000000000000"
+  VpcSubnet1:
+    Type: String
+    Default: "subnet-00000000000000000"
+  VpcSubnet2:
+    Type: String
+    Default: "subnet-00000000000000000"
+  VpcSubnet3:
+    Type: String
+    Default: "subnet-00000000000000000"
+  EnvRdsMysqlSecret:
+    Type: String
+    Default: "devops/test"
+
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
-    Timeout: 3
+    Timeout: 30
+    MemorySize: 1024
 
 Resources:
   ApiAppFunction:
@@ -17,6 +38,16 @@ Resources:
       PackageType: Image
       Architectures:
         - x86_64
+      VpcConfig:
+        SecurityGroupIds:
+          - !Ref VpcSecurityGroup
+        SubnetIds:
+          - !Ref VpcSubnet1
+          - !Ref VpcSubnet2
+      Environment:
+        Variables:
+          STAGE: !Ref EnvStage
+          RDS_MYSQL_SECRET: !Ref EnvRdsMysqlSecret
       Events:
         ApiApp:
           Type: Api

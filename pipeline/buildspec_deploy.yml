@@ -17,3 +17,4 @@ phases:
                     --image-repository ${ENV_IMAGE_REPOSITORY}
                     --no-fail-on-empty-changeset
                     --role-arn ${ENV_CLOUDFORMATION_EXECUTION_ROLE}
+                    --parameter-overrides ParameterKey=EnvStage,ParameterValue=${ENV_STAGE} ParameterKey=VpcSecurityGroup,ParameterValue=${ENV_VPC_SG} ParameterKey=VpcSubnet1,ParameterValue=${ENV_VPC_SUBNET_1} ParameterKey=VpcSubnet2,ParameterValue=${ENV_VPC_SUBNET_2} ParameterKey=EnvRdsMysqlSecret,ParameterValue=${ENV_RDS_MYSQL_SM}
